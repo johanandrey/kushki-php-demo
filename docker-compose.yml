@@ -6,4 +6,4 @@ services:
     ports:
       - 8000:80
     volumes:
-      - .:/var/www/html
+      - ./public_html:/var/www/html
