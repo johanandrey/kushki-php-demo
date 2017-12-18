@@ -21,11 +21,26 @@ $subtotalIVA0=0;
 $ice = 0;
 $monto = new kushki\lib\Amount($subTotalIVA, $iva, $subtotalIVA0, $ice);
 //$trx =  $kushki->charge($token, $monto);
-$trx = $kushki->deferredCharge($token, $monto, 2);
+
+$metadataarray = array(
+	'nombre' => '',
+	'tipodoc' => '',
+	'documento' => '',
+	'ciudad' => '',
+	'direccion_envio' => '',
+	'email' => '',
+	'celular' => '',
+	'talla_pijama_1' => '',
+	'talla_pijama_2' => '',
+	);
+
+$metadata = json_encode($metadataarray);
+$trx = $kushki->charge($token, $monto, $metadata);
 
 if($trx->isSuccessful()){
 	print_r($trx->getTicketNumber());	
 } else {
 	print_r($trx->getResponseText());	
 }
+
 
