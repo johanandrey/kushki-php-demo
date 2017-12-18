@@ -1,8 +1,4 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once 'vendor/autoload.php';
 
 //$merchantId = '10000001641344874123111220';
