@@ -9,5 +9,4 @@
 	$_SESSION["celular"] = htmlentities($_POST['celular'], ENT_QUOTES, "UTF-8");
 	$_SESSION["pijama1"] = htmlentities($_POST['pijama1'], ENT_QUOTES, "UTF-8");
 	$_SESSION["pijama2"] = htmlentities($_POST['pijama2'], ENT_QUOTES, "UTF-8");
-	//echo htmlentities($_POST['text1'], ENT_QUOTES, "UTF-8");
 ?>

@@ -7,7 +7,7 @@
 	$merchantId = '10000002817379000700151319726277';
 	$idioma = kushki\lib\KushkiLanguage::ES;
 	$moneda = kushki\lib\KushkiCurrency::COP;
-	$entorno = kushki\lib\KushkiEnvironment::TESTING;
+	$entorno = kushki\lib\KushkiEnvironment::PRODUCTION;
 	$kushki = new kushki\lib\Kushki($merchantId, $idioma, $moneda, $entorno);
 	
 	$_SESSION["token"] = $_POST['kushkiToken'];
