@@ -24,7 +24,7 @@ session_start();
                 <div class="col-sm-8">
                     <div class="col-auto">
                         <label for="nombreInput1"><i class="far fa-user"></i></label>
-                        <input type="text" id="nombreInput1" class="form-control" placeholder="Nombre" required>
+                        <input type="text" id="nombreInput1" class="form-control" placeholder="Nombres y apellidos" required>
                     </div>
                     <br />
                     <div class="col-auto">
@@ -65,43 +65,46 @@ session_start();
                         <div class="form-row align-items-center">
                             <div class="col-4">
                                 <label for="celularInput"><i class="fas fa-phone"></i></label>
-                                <input type="number" id="celularInput" class="form-control" placeholder="Número de celular" required>
+                                <input type="number" id="celularInput" class="form-control" placeholder="# de celular" required>
                             </div>
-                            <div class="col-auto">
+                            
+                            <div class="col-5 mx-auto">
+                                <div class="col-12">
+                                <h4><span class="badge badge-secondary">Tallas de las pijamas</span></h4>
+                                </div>
+                                <div class="col-12 form-row align-items-center">
+                                    <div class="col-auto">
+                                        <label for="pijama1"><i class="fas fa-child"></i>&nbsp;Pijama 1 </label>
+                                        <select class="form-control mb-2 mb-sm-0" id="pijama1" style="width: auto;" required>
+                                            <option value="" selected="">--</option>
+                                            <option value="1m">1M</option>
+                                            <option value="3m">3M</option>
+                                            <option value="6m">6M</option>
+                                            <option value="12m">12M</option>
+                                            <option value="18m">18M</option>
+                                            <option value="23m">23M</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-auto">
+                                        <label for="pijama2"><i class="fas fa-male"></i>&nbsp;Pijama 2 </label>
+                                        <select class="form-control mb-2 mb-sm-0" id="pijama2" style="width: auto;" required>
+                                            <option value="" selected="">--</option>
+                                            <option value="1m">1M</option>
+                                            <option value="3m">3M</option>
+                                            <option value="6m">6M</option>
+                                            <option value="12M">12M</option>
+                                            <option value="18M">18M</option>
+                                            <option value="23M">23M</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
                                 <button id="pago" type="button" class="btn btn-default align-bottom">Iniciar Pago</button>
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <div class="col-auto">
-                        <div class="row h-100 justify-content-center align-items-center">
-                            <h3><span class="badge badge-secondary">Tallas de las pijamas</span></h3>
-                            <div class="col-auto">
-                                    <label for="pijama1"><i class="fas fa-child"></i>&nbsp;Pijama 1</label>
-                                    <select class="form-control mb-2 mb-sm-0" id="pijama1" style="width :auto;" required>
-                                    <option value="" selected="">--</option>
-                                    <option value="1m">1M</option>
-                                    <option value="3m">3M</option>
-                                    <option value="6m">6M</option>
-                                    <option value="12m">12M</option>
-                                    <option value="18m">18M</option>
-                                    <option value="23m">23M</option>
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                    <label for="pijama2"><i class="fas fa-child"></i>&nbsp;Pijama 2 </label>
-                                    <select class="form-control mb-2 mb-sm-0" id="pijama2" style="width :auto;" required>
-                                    <option value="" selected="">--</option>
-                                    <option value="1m">1M</option>
-                                    <option value="3m">3M</option>
-                                    <option value="6m">6M</option>
-                                    <option value="12M">12M</option>
-                                    <option value="18M">18M</option>
-                                    <option value="23M">23M</option>
-                                </select>
-                            </div>
-                        </div>
-                        </div>
                 </div><!-- closes left panel -->
                 <div class="col-sm-4">
                     <table class="table table-hover">
@@ -113,7 +116,7 @@ session_start();
                             <tr>
                                 <td>
                                     <div class="col-auto">
-                                        <form id="kushki-pay-form" action="result.php" method="post">
+                                        <form id="kushki-pay-form" action="process.php" method="post">
                                             <input type="hidden" name="cart_id" value="123">
                                         </form>
                                     </div>
@@ -127,32 +130,6 @@ session_start();
             <!--</form>-->
         <p><br /><br /><br /></p>
        
-
-        <section id="payment">
-            <div class="review-payment">
-                <h2>Pago seguro</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <!-- Kushki Snippet Begins -->
-                    <button onclick="loadKushkiBox()">Test</button>
-                    <button id="boton">Post</button>
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <footer id="footer"><!--Footer-->
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <p class="pull-left">Copyright © 2017 Kushki All rights reserved.</p>
-                        </span></p>
-                    </div>
-                </div>
-            </div>
-        </footer><!--/Footer-->
-
         <!-- scripts and more -->
         <script src="https://p-uat.kushkipagos.com/kushki/kushki/kushki.min.js"></script>
         <script src="https://cdn-uat.kushkipagos.com/kushki-checkout.js"></script>
@@ -171,8 +148,65 @@ session_start();
                 isDeferred: true
                 });
             }
+
+            function validate(){
+                nombre = document.getElementById('nombreInput1').value;
+                documento = document.getElementById('docInput').value;
+                ciudad = document.getElementById('ciudadInput').value;
+                direccion = document.getElementById('direccionInput').value;
+                email = document.getElementById('emailInput').value;
+                celular = document.getElementById('celularInput').value;
+                pijama1 = document.getElementById('pijama1').value;
+                pijama2 = document.getElementById('pijama2').value;
+                if( nombre.length < 8){
+                    alert('Por favor coloque un nombre válido');
+                    return false;
+                }
+                if( email.length < 7){
+                    alert('Por favor coloque un email válido');
+                    return false;
+                }
+                if( documento.length < 6){
+                    alert('Por favor coloque un documento válido');
+                    return false;
+                }
+                if( ciudad.length < 4){
+                    alert('Por favor coloque una ciudad válida');
+                    return false;
+                }
+                if( direccion.length < 8){
+                    alert('Por favor coloque una dirección válida');
+                    return false;
+                }
+                if( celular.length < 6){
+                    alert('Por favor coloque un número de celular válido');
+                    return false;
+                }
+                if( pijama1 == "" || pijama2 == ""){
+                    alert('Por favor seleccione una talla de pijama');
+                    return false;   
+                }
+                return true;
+            }
+
+            function disable(){
+                document.getElementById('nombreInput1').disabled = true;
+                document.getElementById('docInput').disabled = true;
+                document.getElementById('tipoDocInput').disabled = true;
+                document.getElementById('ciudadInput').disabled = true;
+                document.getElementById('direccionInput').disabled = true;
+                document.getElementById('emailInput').disabled = true;
+                document.getElementById('celularInput').disabled = true;
+                document.getElementById('pijama1').disabled = true;
+                document.getElementById('pijama2').disabled = true;
+                document.getElementById('pago').disabled = true;
+            }
+
             $(document).ready(function(){
                 $("#pago").click(function(){
+                    if (!validate())
+                        return;
+                    disable();
                     $.post("store.php",
                         {
                             nombre: document.getElementById('nombreInput1').value,
