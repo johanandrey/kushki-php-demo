@@ -4,10 +4,10 @@
 	session_start();
 	require_once 'vendor/autoload.php';
 	
-	$merchantId = '10000002817379000700151319726277';
-	$idioma = kushki\lib\KushkiLanguage::ES;
-	$moneda = kushki\lib\KushkiCurrency::COP;
-	$entorno = kushki\lib\KushkiEnvironment::TESTING;
+	$merchantId = 'PRIVATE_KEY';
+	$idioma = kushki\lib\KushkiLanguage::LANGUAJE;
+	$moneda = kushki\lib\KushkiCurrency::CURRENCY;
+	$entorno = kushki\lib\KushkiEnvironment::ENVIRONMENT;
 	$kushki = new kushki\lib\Kushki($merchantId, $idioma, $moneda, $entorno);
 	
 	$_SESSION["token"] = $_POST['kushkiToken'];
