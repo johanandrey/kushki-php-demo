@@ -21,4 +21,4 @@ To start the project use docker-compose (1) or copy the public_html folder to yo
 	- ENVIRONMENT
 
 Notes: 
- - To change the port, modify the docker-compose.yml file
+ - To change exported port, modify the docker-compose.yml file
