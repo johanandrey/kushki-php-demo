@@ -2,8 +2,12 @@ version: '2'
 
 services:
   web:
+    env_file:
+      - commerce_data.env
     build: .
     ports:
       - 8000:80
     volumes:
       - ./public_html:/var/www/html
+      - ./scripts:/scripts 
+    command: bash -c "chmod +x /scripts/set_commerce_data.sh && /bin/bash /scripts/set_commerce_data.sh"
